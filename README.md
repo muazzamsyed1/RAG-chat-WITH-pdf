@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RAG Chatbot — Production-Ready Application
 
 A secure, multi-user **Retrieval-Augmented Generation (RAG) chatbot** that lets each user upload PDF documents and ask AI-powered questions about them using Google Gemini.
@@ -169,3 +170,7 @@ See [mobile/android/README.md](mobile/android/README.md) for the complete 20-pha
 ## License
 
 MIT
+=======
+# RAG-chat-WITH-pdf
+My first Git Repository from which i am testing how to operate Git hub.
+>>>>>>> ff8a02b0b3d9fdee515fca7a67a9558e02f067e6
