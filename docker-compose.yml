@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./data/ragchat.db
+      - UPLOAD_DIR=/data/uploads
+      - CHROMA_PERSIST_DIR=/vector_db/chroma
+    volumes:
+      - rag_data:/data
+      - rag_vector:/vector_db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - rag_network
+
+  # Uncomment for production PostgreSQL:
+  # postgres:
+  #   image: postgres:16-alpine
+  #   container_name: rag_postgres
+  #   restart: unless-stopped
+  #   environment:
+  #     POSTGRES_USER: raguser
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_DB: ragchat
+  #   volumes:
+  #     - pg_data:/var/lib/postgresql/data
+  #   networks:
+  #     - rag_network
+
+volumes:
+  rag_data:
+  rag_vector:
+
+networks:
+  rag_network:
+    driver: bridge

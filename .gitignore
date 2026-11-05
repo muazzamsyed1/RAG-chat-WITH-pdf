@@ -1,0 +1,59 @@
+# Environment
+.env
+*.env
+!*.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+venv/
+env/
+.venv/
+
+# Testing
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Data
+data/uploads/*
+!data/uploads/.gitkeep
+vector_db/*
+!vector_db/.gitkeep
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Secrets
+*.pem
+*.key
+*.crt
+
+# Temp
+test_ragchat.db
